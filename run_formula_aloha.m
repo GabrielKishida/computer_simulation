@@ -1,12 +1,12 @@
 % Simulation parameters
-lambda = 10;
-mu = 0.5;
+lambda = 10;             % Average user connection rate per hour
+mu = 0.5;                % Average amount of time user will stay
 simulationLength = 24;   % Simulation length in hours
 timeSlotLength = 0.01;   % Length of a time-slot in hours
 
-accessProbs=[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
+accessProbs=0.1:0.1:0.9
 
-iterations = 1000;
+iterations = 100;
 
 avgThroughputPerAccessProb = zeros(1, length(accessProbs));
 for i=1:iterations
@@ -17,7 +17,7 @@ avgThroughputPerAccessProb = avgThroughputPerAccessProb/iterations;
 
 f=figure();
 % Plot the average throughput as a function of time
-plot(0.1:p(1):p(length(p)), avgThroughputPerAccessProb,'o-');
+plot(accessProbs, avgThroughputPerAccessProb,'o-');
 xlabel('User Access Probability (p)');
 ylabel('Average Throughput per Time Slot');
-title('Average Throughput vs. Access Probability');
+title('Formula Simulation Method');
